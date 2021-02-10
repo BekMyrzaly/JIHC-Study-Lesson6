@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
             btndel, btnmul, btnminus, btnplus,
             btnequal, btndot;
     TextView textView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,65 +40,90 @@ public class MainActivity extends AppCompatActivity {
         btndot = findViewById(R.id.btndot);
         textView = findViewById(R.id.textView);
 
-        btn0.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener button_num = new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                textView.setText("0");
+            public void onClick(View v) {
+                String first_num = textView.getText().toString();
+                String second_num = "";
+                String result = "";
+                switch (v.getId()){
+                    case R.id.btn0:
+                        second_num =  "0";
+                        break;
+                    case R.id.btn1:
+                        second_num =  "1";
+                        break;
+                    case R.id.btn2:
+                        second_num =  "2";
+                        break;
+                    case R.id.btn3:
+                        second_num =  "3";
+                        break;
+                    case R.id.btn4:
+                        second_num =  "4";
+                        break;
+                    case R.id.btn5:
+                        second_num =  "5";
+                        break;
+                    case R.id.btn6:
+                        second_num =  "6";
+                        break;
+                    case R.id.btn7:
+                        second_num =  "7";
+                        break;
+                    case R.id.btn8:
+                        second_num =  "8";
+                        break;
+                    case R.id.btn9:
+                        second_num =  "9";
+                        break;
+                }
+                if(first_num.equals("0")){
+                    result = second_num;
+                }else{
+                    result = first_num + second_num;
+                }
+                textView.setText(result);
+
             }
-        });
-        btn1.setOnClickListener(new View.OnClickListener() {
+        };
+        btn0.setOnClickListener(button_num);
+        btn1.setOnClickListener(button_num);
+        btn2.setOnClickListener(button_num);
+        btn3.setOnClickListener(button_num);
+        btn4.setOnClickListener(button_num);
+        btn5.setOnClickListener(button_num);
+        btn6.setOnClickListener(button_num);
+        btn7.setOnClickListener(button_num);
+        btn8.setOnClickListener(button_num);
+        btn9.setOnClickListener(button_num);
+
+
+        View.OnClickListener clear_pl_min = new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                textView.setText("1");
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.btnC:
+                        textView.setText("0");
+                        break;
+                    case R.id.btnpm:
+                        String viewT = textView.getText().toString();
+                        int intviewT = Integer.parseInt(viewT);
+                        if(intviewT > 0){
+                            textView.setText("-" + viewT);
+                        }else{
+                            intviewT = intviewT * (-1);
+                            textView.setText(""+intviewT);
+                        }
+                        break;
+                }
+
             }
-        });
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("2");
-            }
-        });
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("3");
-            }
-        });
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("4");
-            }
-        });
-        btn5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("5");
-            }
-        });
-        btn6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("6");
-            }
-        });
-        btn7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("7");
-            }
-        });
-        btn8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("8");
-            }
-        });
-        btn9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("9");
-            }
-        });
+        };
+
+        btnC.setOnClickListener(clear_pl_min);
+        btnpm.setOnClickListener(clear_pl_min);
+
     }
+
 }
