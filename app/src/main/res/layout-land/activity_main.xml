@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="15dp"
     tools:context=".MainActivity">
 
     <TextView
@@ -16,7 +16,7 @@
         android:gravity="right"
         android:text="0"
         android:textColor="@color/white"
-        android:textSize="45dp" />
+        android:textSize="20dp" />
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         android:gravity="right"
         android:text="0"
         android:textColor="@color/white"
-        android:textSize="60dp" />
+        android:textSize="35dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,26 +36,27 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
 
             <Button
                 android:id="@+id/btnC"
-                style="@style/simple_gray"
+                style="@style/simple_gray_land"
                 android:text="AC" />
 
             <Button
                 android:id="@+id/btnpm"
-                style="@style/simple_gray_lr"
+                style="@style/simple_gray_lr_land"
                 android:text="±" />
 
             <Button
                 android:id="@+id/btnper"
-                style="@style/simple_gray_rl"
+                style="@style/simple_gray_rl_land"
                 android:text="%" />
 
             <Button
                 android:id="@+id/btndel"
-                style="@style/simple_solve_button"
+                style="@style/simple_solve_button_land"
                 android:text="/" />
 
 
@@ -66,26 +67,27 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_weight="1"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn7"
-                style="@style/simple_calculator_button"
+                style="@style/calculator_land"
                 android:text="7" />
 
             <Button
                 android:id="@+id/btn8"
-                style="@style/simple_lr"
+                style="@style/calculator_land_lr"
                 android:text="8" />
 
             <Button
                 android:id="@+id/btn9"
-                style="@style/simple_rl"
+                style="@style/calculator_land_rl"
                 android:text="9" />
 
             <Button
                 android:id="@+id/btnmul"
-                style="@style/simple_solve_button"
+                style="@style/simple_solve_button_land"
                 android:text="x" />
 
 
@@ -96,26 +98,27 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_weight="1"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn4"
-                style="@style/simple_calculator_button"
+                style="@style/calculator_land"
                 android:text="4" />
 
             <Button
                 android:id="@+id/btn5"
-                style="@style/simple_lr"
+                style="@style/calculator_land_lr"
                 android:text="5" />
 
             <Button
                 android:id="@+id/btn6"
-                style="@style/simple_rl"
+                style="@style/calculator_land_rl"
                 android:text="6" />
 
             <Button
                 android:id="@+id/btnminus"
-                style="@style/simple_solve_button"
+                style="@style/simple_solve_button_land"
                 android:text="-" />
 
 
@@ -125,28 +128,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
 
             <Button
                 android:id="@+id/btn1"
-                style="@style/simple_calculator_button"
+                style="@style/calculator_land"
                 android:text="1" />
 
             <Button
                 android:id="@+id/btn2"
-                style="@style/simple_lr"
+                style="@style/calculator_land_lr"
                 android:text="2" />
 
             <Button
                 android:id="@+id/btn3"
-                style="@style/simple_rl"
+                style="@style/calculator_land_rl"
                 android:text="3" />
 
             <Button
                 android:id="@+id/btnplus"
-                style="@style/simple_solve_button"
+                style="@style/simple_solve_button_land"
                 android:text="+" />
 
 
@@ -166,18 +170,18 @@
                 android:layout_weight="2"
                 android:text="0"
                 android:textColor="@color/white"
-                android:textSize="40dp"
+                android:textSize="20dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/btn_zero_click1"/>
 
             <Button
                 android:id="@+id/btndot"
-                style="@style/simple_rl"
+                style="@style/calculator_land_rl"
                 android:text="." />
 
             <Button
                 android:id="@+id/btnequal"
-                style="@style/simple_solve_button"
+                style="@style/simple_solve_button_land"
                 android:text="=" />
 
 

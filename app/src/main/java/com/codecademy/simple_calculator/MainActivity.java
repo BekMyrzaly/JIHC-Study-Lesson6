@@ -2,6 +2,7 @@ package com.codecademy.simple_calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,13 +13,24 @@ public class MainActivity extends AppCompatActivity {
             btn8, btn9, btnC, btnpm, btnper,
             btndel, btnmul, btnminus, btnplus,
             btnequal, btndot;
-    TextView textView;
+    TextView textView, textPreview;
+    String previewOper, operation, startNum, endNum;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        idEquals();
+        numbers();
+        ClearPlusMinusPer();
+        btnSolves();
+        btnOperation();
+
+
+    }
+    public void idEquals(){
         btn0 = findViewById(R.id.btn0);
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
@@ -29,17 +41,23 @@ public class MainActivity extends AppCompatActivity {
         btn7 = findViewById(R.id.btn7);
         btn8 = findViewById(R.id.btn8);
         btn9 = findViewById(R.id.btn9);
+
         btnC = findViewById(R.id.btnC);
         btnpm = findViewById(R.id.btnpm);
+
         btnper = findViewById(R.id.btnper);
         btndel = findViewById(R.id.btndel);
         btnmul = findViewById(R.id.btnmul);
         btnminus = findViewById(R.id.btnminus);
         btnplus = findViewById(R.id.btnplus);
         btnequal = findViewById(R.id.btnequal);
+
         btndot = findViewById(R.id.btndot);
         textView = findViewById(R.id.textView);
+        textPreview = findViewById(R.id.textPreview);
 
+    }
+    public void numbers(){
         View.OnClickListener button_num = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,18 +115,15 @@ public class MainActivity extends AppCompatActivity {
         btn7.setOnClickListener(button_num);
         btn8.setOnClickListener(button_num);
         btn9.setOnClickListener(button_num);
-
-
+    }
+    public void ClearPlusMinusPer(){
         View.OnClickListener clear_pl_min = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String viewT = textView.getText().toString();
+                int intviewT = Integer.parseInt(viewT);
                 switch (v.getId()){
-                    case R.id.btnC:
-                        textView.setText("0");
-                        break;
                     case R.id.btnpm:
-                        String viewT = textView.getText().toString();
-                        int intviewT = Integer.parseInt(viewT);
                         if(intviewT > 0){
                             textView.setText("-" + viewT);
                         }else{
@@ -116,6 +131,12 @@ public class MainActivity extends AppCompatActivity {
                             textView.setText(""+intviewT);
                         }
                         break;
+                    case R.id.btnC:
+                        textView.setText("0");
+                        textPreview.setText("");
+                        break;
+
+
                 }
 
             }
@@ -123,7 +144,66 @@ public class MainActivity extends AppCompatActivity {
 
         btnC.setOnClickListener(clear_pl_min);
         btnpm.setOnClickListener(clear_pl_min);
+    }
+    public void btnSolves(){
+        View.OnClickListener solves = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startNum = textView.getText().toString();
+                switch (v.getId()){
+                    case R.id.btnplus:
+                        operation = "+";
+                        break;
+                    case R.id.btnminus:
+                        operation = "-";
+                        break;
+                    case R.id.btnmul:
+                        operation = "*";
+                        break;
+                    case R.id.btndel:
+                        operation = "/";
+                        break;
+
+                }
+                previewOper = startNum + operation;
+                textPreview.setText(previewOper);
+                textView.setText("0");
+
+            }
+        };
+        btnplus.setOnClickListener(solves);
+        btnminus.setOnClickListener(solves);
+        btnmul.setOnClickListener(solves);
+        btndel.setOnClickListener(solves);
 
     }
+    public void btnOperation(){
+        View.OnClickListener answer = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                endNum = textView.getText().toString();
+                int var1 = Integer.parseInt(startNum);
+                int var2 = Integer.parseInt(endNum);
+                int total = 0;
+                if (operation.equals("+")){
+                    total = var1 + var2;
+                }else if(operation.equals("-")){
+                    total = var1 - var2;
+                }else if(operation.equals("*")){
+                    total = var1 * var2;
+                }else if(operation.equals("/")){
+                    total = var1 / var2;
+                }
+                previewOper = startNum + operation + endNum + " = " + total;
+
+                textPreview.setText(previewOper);
+                textView.setText(""+total);
+
+            }
+
+        };
+        btnequal.setOnClickListener(answer);
+    }
+
 
 }
